@@ -1,0 +1,32 @@
+{% include "layout/header.html" %}
+
+
+<body>
+    {% include "layout/navbar.html" %}
+
+    {% if character %}
+        <ul>
+        {% for characters in character %}
+            <li><i>Nom du personnage : {{ characters.name }}</i></li>
+            <li>Hp : {{ characters.hp }}</li>
+            <li>Arme : {{ characters.weapon }}</li>
+            <li>Armure : {{ characters.armor }}</li>
+            <li>Mana : {{ characters.mana }}</li>
+            <li>Sort : {{ characters.spell.name }}</li>
+            <li>Classe : {{ characters.character_type }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+    {% endif %}
+
+    <form action="/your-name/" method="post">
+        <label for="your_name">Votre nom : </label>
+        <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+        <label for="your_type">Votre classe : </label>
+        <input id="your_type" type="text" name="your_type" value="{{ current_type }}">
+        <input type="submit" value="OK">
+    </form>
+
+    {% include "layout/footer.html" %}
+</body>
+
